@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import Header from './Header'
 import Button from './Button'
-import Statistic from './Statistic'
+import Statistics from './Statistics'
 
 const App = () => {
   const [good, setGood] = useState(0)
@@ -19,16 +19,7 @@ const App = () => {
       <Button handleClick={handleGood} text='Good' />
       <Button handleClick={handleNeutral} text='Neutral' />
       <Button handleClick={handleBad} text='Bad' />
-      {all !== 0 && (
-        <>
-          <Statistic text='Good:' value={good} />
-          <Statistic text='Neutral:' value={neutral} />
-          <Statistic text='Bad:' value={bad} />
-          <Statistic text='All:' value={all} />
-          <Statistic text='Average:' value={(good - bad) / all} />
-          <Statistic text='Positive:' value={(good * 100) / all} />
-        </>
-      )}
+      {all !== 0 && <Statistics good={good} neutral={neutral} bad={bad} all={all}></Statistics>}
       {all === 0 && <h2>No button pressed</h2>}
     </div>
   )
